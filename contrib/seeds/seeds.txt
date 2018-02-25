@@ -1,0 +1,2 @@
+192.99.35.69:35444 # node1.andcoin.org
+37.59.54.5:35444 # node2.andcoin.org

@@ -1,0 +1,9 @@
+Building AndCOIN
+
+See doc/readme-qt.rst for instructions on building AndCOIN-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of AndCOIN.
+
+See doc/build-*.txt for instructions on building andcoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of AndCOIN.
