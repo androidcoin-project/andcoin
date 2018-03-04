@@ -1192,13 +1192,12 @@ void MapPort(bool)
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
-    {"poolminers.hopto.org", "poolminers.hopto.org"},
     {"node.androidcoin.info", "node.androidcoin.info"},
+    {"andcoin.lchain.cc", "andcoin.lchain.cc"},
     {NULL, NULL}
 };
 
 static const char *strTestNetDNSSeed[][2] = {
-    {"node.androidcoin.info", "node.androidcoin.info"},
     {NULL, NULL}
 };
 
@@ -1246,8 +1245,14 @@ void ThreadDNSAddressSeed()
 
 
 unsigned int pnSeed[] = {
-
-    0x18362805, 0x65320102, 0x6e884898,
+		0x6819df1d,
+		0x90d95601,
+		0x681b8cdc,
+		0xb73c6aa3,
+		0x330fb907,
+		0xbcbbbcc2,
+		0xb2d5f9a2,
+		0x6d68a839,
 };
 
 void DumpAddresses()
