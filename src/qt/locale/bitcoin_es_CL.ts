@@ -37,7 +37,7 @@ Eric Young (eay@cryptsoft.com) y UPnP software escrito por Thomas Bernard.</tran
     </message>
     <message>
         <location line="+0"/>
-        <source>StartJOIN</source>
+        <source>AndCOIN</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1652,7 +1652,7 @@ Dirección: %4</translation>
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+22"/>
-        <source>StartJOIN</source>
+        <source>AndCOIN</source>
         <translation type="unfinished"/>
     </message>
     <message>

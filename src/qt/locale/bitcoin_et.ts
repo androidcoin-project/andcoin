@@ -34,7 +34,7 @@ Toode sisaldab OpenSSL Projekti all toodetud tarkvara, mis on kasutamiseks OpenS
     </message>
     <message>
         <location line="+0"/>
-        <source>StartJOIN</source>
+        <source>AndCOIN</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1648,7 +1648,7 @@ Aadress: %4⏎</translation>
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+22"/>
-        <source>StartJOIN</source>
+        <source>AndCOIN</source>
         <translation type="unfinished"/>
     </message>
     <message>

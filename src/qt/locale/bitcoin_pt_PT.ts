@@ -34,7 +34,7 @@ Este produto inclui software desenvolvido pelo Projecto OpenSSL para uso no Open
     </message>
     <message>
         <location line="+0"/>
-        <source>StartJOIN</source>
+        <source>AndCOIN</source>
         <translation>Os programadores AndCOIN</translation>
     </message>
 </context>
@@ -1649,7 +1649,7 @@ Endereço: %4
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+22"/>
-        <source>StartJOIN</source>
+        <source>AndCOIN</source>
         <translation>Os programadores AndCOIN</translation>
     </message>
     <message>

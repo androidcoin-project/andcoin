@@ -33,7 +33,7 @@ Hoc productum continet programmata composita ab OpenSSL Project pro utendo in Op
     </message>
     <message>
         <location line="+0"/>
-        <source>StartJOIN</source>
+        <source>AndCOIN</source>
         <translation>AndCOIN curatores</translation>
     </message>
 </context>
@@ -1648,7 +1648,7 @@ Inscriptio: %4
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+22"/>
-        <source>StartJOIN</source>
+        <source>AndCOIN</source>
         <translation>AndCOIN curatores</translation>
     </message>
     <message>
