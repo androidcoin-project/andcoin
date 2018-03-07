@@ -18,6 +18,7 @@ class AddressBookPage;
 class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class RPCConsole;
+class Console;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -64,7 +65,7 @@ private:
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
     SignVerifyMessageDialog *signVerifyMessageDialog;
-
+    Console *consolePage;
     TransactionView *transactionView;
 
 public slots:
@@ -78,7 +79,8 @@ public slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
-
+    /** Switch to console page */
+    void gotoConsolePage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */

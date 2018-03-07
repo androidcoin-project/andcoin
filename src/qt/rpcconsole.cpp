@@ -213,7 +213,8 @@ RPCConsole::~RPCConsole()
     delete ui;
 }
 
-bool RPCConsole::eventFilter(QObject* obj, QEvent *event)
+/* 
+ * bool RPCConsole::eventFilter(QObject* obj, QEvent *event)
 {
     if(event->type() == QEvent::KeyPress) // Special key handling
     {
@@ -224,7 +225,7 @@ bool RPCConsole::eventFilter(QObject* obj, QEvent *event)
         {
         case Qt::Key_Up: if(obj == ui->lineEdit) { browseHistory(-1); return true; } break;
         case Qt::Key_Down: if(obj == ui->lineEdit) { browseHistory(1); return true; } break;
-        case Qt::Key_PageUp: /* pass paging keys to messages widget */
+        case Qt::Key_PageUp: // pass paging keys to messages widget 
         case Qt::Key_PageDown:
             if(obj == ui->lineEdit)
             {
@@ -247,7 +248,7 @@ bool RPCConsole::eventFilter(QObject* obj, QEvent *event)
         }
     }
     return QDialog::eventFilter(obj, event);
-}
+}  */
 
 void RPCConsole::setClientModel(ClientModel *model)
 {

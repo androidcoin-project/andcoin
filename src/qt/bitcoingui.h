@@ -17,6 +17,7 @@ class AddressBookPage;
 class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
+class Console;
 class RPCConsole;
 
 class CWallet;
@@ -67,7 +68,7 @@ public:
     QAction * getAddressBookAction() { return addressBookAction; }
     QAction * getReceiveCoinsAction() { return receiveCoinsAction; }
     QAction * getSendCoinsAction() { return sendCoinsAction; }
-
+    QAction * getConsoleAction() { return consoleAction; }
 protected:
     void changeEvent(QEvent *e);
     void closeEvent(QCloseEvent *event);
@@ -102,11 +103,13 @@ private:
     QAction *changePassphraseAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
+    QAction *consoleAction;
 
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
     TransactionView *transactionView;
     RPCConsole *rpcConsole;
+    Console *consolePage;
 
     QMovie *syncIconMovie;
     /** Keep track of previous number of blocks, to detect progress */
@@ -173,7 +176,8 @@ private slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
-
+    /** Switch to console page */
+    void gotoConsolePage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */

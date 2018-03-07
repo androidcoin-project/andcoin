@@ -17,6 +17,7 @@
 #include "overviewpage.h"
 #include "askpassphrasedialog.h"
 #include "ui_interface.h"
+#include "console.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -58,7 +59,7 @@ WalletView::WalletView(QWidget *parent, BitcoinGUI *_gui):
     receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
 
     sendCoinsPage = new SendCoinsDialog(gui);
-
+    consolePage = new Console();
     signVerifyMessageDialog = new SignVerifyMessageDialog(gui);
 
     addWidget(overviewPage);
@@ -66,6 +67,7 @@ WalletView::WalletView(QWidget *parent, BitcoinGUI *_gui):
     addWidget(addressBookPage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
+    addWidget(consolePage);
 
     // Clicking on a transaction on the overview page simply sends you to transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), this, SLOT(gotoHistoryPage()));
@@ -103,6 +105,7 @@ void WalletView::setClientModel(ClientModel *clientModel)
         overviewPage->setClientModel(clientModel);
         addressBookPage->setOptionsModel(clientModel->getOptionsModel());
         receiveCoinsPage->setOptionsModel(clientModel->getOptionsModel());
+       // consolePage->setClientModel(clientModel);
     }
 }
 
@@ -120,6 +123,7 @@ void WalletView::setWalletModel(WalletModel *walletModel)
         addressBookPage->setModel(walletModel->getAddressTableModel());
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
         sendCoinsPage->setModel(walletModel);
+       // consolePage->setWalletModel(walletModel);
         signVerifyMessageDialog->setModel(walletModel);
 
         setEncryptionStatus();
@@ -172,6 +176,11 @@ void WalletView::gotoReceiveCoinsPage()
 {
     gui->getReceiveCoinsAction()->setChecked(true);
     setCurrentWidget(receiveCoinsPage);
+}
+void WalletView::gotoConsolePage()
+{
+    gui->getConsoleAction()->setChecked(true);
+    setCurrentWidget(consolePage);
 }
 
 void WalletView::gotoSendCoinsPage(QString addr)

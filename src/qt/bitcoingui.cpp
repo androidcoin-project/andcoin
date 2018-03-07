@@ -21,6 +21,7 @@
 #include "guiconstants.h"
 #include "notificator.h"
 #include "guiutil.h"
+#include "console.h"
 #include "rpcconsole.h"
 #include "ui_interface.h"
 #include "wallet.h"
@@ -65,11 +66,12 @@ BitcoinGUI::BitcoinGUI(QWidget *parent) :
     aboutQtAction(0),
     trayIcon(0),
     notificator(0),
+    consolePage(0),
     rpcConsole(0),
     prevBlocks(0)
 {
     restoreWindowGeometry();
-    setWindowTitle(tr("AndCOIN") + " v1.2.0 - " + tr("Wallet"));
+    setWindowTitle(tr("AndCoin") + " v1.2.1.1 - " + tr("Wallet"));
 #ifndef Q_OS_MAC
     QApplication::setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
@@ -141,6 +143,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent) :
 
     syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
+	consolePage = new Console(this);
+
     rpcConsole = new RPCConsole(this);
     connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(show()));
 
@@ -193,13 +197,20 @@ void BitcoinGUI::createActions()
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
-
+    
     addressBookAction = new QAction(QIcon(":/icons/address-book"), tr("&Addresses"), this);
     addressBookAction->setStatusTip(tr("Edit the list of stored addresses and labels"));
     addressBookAction->setToolTip(addressBookAction->statusTip());
     addressBookAction->setCheckable(true);
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
     tabGroup->addAction(addressBookAction);
+
+    consoleAction = new QAction(QIcon(":/icons/console"), tr("&Console"), this);
+    consoleAction->setStatusTip(tr("Open console"));
+    consoleAction->setToolTip(consoleAction->statusTip());
+    consoleAction->setCheckable(true);
+    consoleAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    tabGroup->addAction(consoleAction);
 
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
@@ -211,6 +222,8 @@ void BitcoinGUI::createActions()
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
+    connect(consoleAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(consoleAction, SIGNAL(triggered()), this, SLOT(gotoConsolePage()));
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
     quitAction->setStatusTip(tr("Quit application"));
@@ -219,7 +232,7 @@ void BitcoinGUI::createActions()
     aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About AndCOIN"), this);
     aboutAction->setStatusTip(tr("Show information about AndCOIN"));
     aboutAction->setMenuRole(QAction::AboutRole);
-    aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
+    aboutQtAction = new QAction(QIcon(":/icons/about_qt"), tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
@@ -295,6 +308,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
     toolbar->addAction(addressBookAction);
+    toolbar->addAction(consoleAction);
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
@@ -371,6 +385,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     signMessageAction->setEnabled(enabled);
     verifyMessageAction->setEnabled(enabled);
     addressBookAction->setEnabled(enabled);
+    consoleAction->setEnabled(enabled);
 }
 
 void BitcoinGUI::createTrayIcon()
@@ -378,7 +393,7 @@ void BitcoinGUI::createTrayIcon()
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
 
-    trayIcon->setToolTip(tr("AndCOIN v1.2.0 client"));
+    trayIcon->setToolTip(tr("AndCoin v1.2.1.1 client"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     trayIcon->show();
 #endif
@@ -490,6 +505,11 @@ void BitcoinGUI::gotoAddressBookPage()
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
+}
+
+void BitcoinGUI::gotoConsolePage()
+{
+    if (walletFrame) walletFrame->gotoConsolePage();
 }
 
 void BitcoinGUI::gotoSendCoinsPage(QString addr)

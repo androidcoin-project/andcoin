@@ -99,6 +99,10 @@ void WalletFrame::gotoReceiveCoinsPage()
 {
     walletStack->gotoReceiveCoinsPage();
 }
+void WalletFrame::gotoConsolePage()
+{
+    walletStack->gotoConsolePage();
+}
 
 void WalletFrame::gotoSendCoinsPage(QString addr)
 {
