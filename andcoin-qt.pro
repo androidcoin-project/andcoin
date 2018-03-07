@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = andcoin-qt
 macx:TARGET = "AndCOIN-Qt"
-VERSION = 1.2.0.0
+VERSION = 1.2.1.1
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -225,6 +225,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/allocators.h \
     src/ui_interface.h \
     src/qt/rpcconsole.h \
+    src/qt/console.h \    
     src/version.h \
     src/netbase.h \
     src/clientversion.h \
@@ -308,6 +309,7 @@ SOURCES += src/qt/bitcoin.cpp \
     src/qt/notificator.cpp \
     src/qt/paymentserver.cpp \
     src/qt/rpcconsole.cpp \
+    src/qt/console.cpp \    
     src/noui.cpp \
     src/leveldb.cpp \
     src/txdb.cpp \
@@ -333,6 +335,7 @@ FORMS += src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
+    src/qt/forms/console.ui \    
     src/qt/forms/optionsdialog.ui
 
 contains(USE_QRCODE, 1) {

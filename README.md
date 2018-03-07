@@ -31,6 +31,17 @@ UPNP Support
 P2p port=35444
 Rpc port=35422
 
+Release note
+------------
+25 frebuary 2018 
+version 1.2.0.0 launch
+
+5 march 2018 Mandatory update
+version 1.2.0.2 fix key checkpoint & add checkpoint
+
+7 march 2018 optional update
+version 1.2.1.1 update qt icon & add console main tab 
+
 License
 -------
 
